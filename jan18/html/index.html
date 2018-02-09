@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<script src="jq.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				  var curDown = false,
+				      curYPos = 0,
+				      curXPos = 0;
+				  $(window).mousemove(function(m){
+				    if(curDown === true){
+				     $(window).scrollTop($(window).scrollTop() + (curYPos - m.pageY)); 
+				     $(window).scrollLeft($(window).scrollLeft() + (curXPos - m.pageX));
+				    }
+				  });
+				  
+				  $(window).mousedown(function(m){
+				    curDown = true;
+				    curYPos = m.pageY;
+				    curXPos = m.pageX;
+				  });
+				  
+				  $(window).mouseup(function(){
+				    curDown = false;
+				  });
+				})
+		</script>
+		<style type="text/css">
+			body{
+				cursor:help;
+			}
+		</style>
+	</head>
+	<body>
+	<img src="fulltorso.png"/>
+	<div id="sound_element" style="visibility:hidden;">
+ <!-- <embed height="1px" width="1px" autoplay="true" autostart="true" src="musics/cheatingheart.mp3" />  -->
+ <audio controls="" autoplay="1" loop>
+  <source src="computer-hum.mp3" type="audio/mpeg">
+</audio> 
+</div>
+<pre>
+	woods silence in winter drops
+	between space of stoplights slow allow traffic
+	going reverb away vibrations melts distant and immediate
+	going as wind
+	reverberation fro myears
+	patterns in the snow as echo of snow above
+	before
+	jet engine warbler call
+	inescapable urge to touch
+	silicon mindset
+	beyond temporal
+	oh i should
+	i i am 
+	oh i could
+</pre>
+	</body>
+</html>
