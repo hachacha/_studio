@@ -15,14 +15,15 @@ function positioning(event)	{
 		key_type = event.which;
 		letter = event.key;
 	}
+	
 	var ctl = document.getElementById('email');
     var startPos = ctl.selectionStart;
     var endPos = ctl.selectionEnd;
     var msg_length = ctl.value.length;
     var email_content = ctl.value;
-    var current_letter = email_content[endPos];
+    
 
-    console.log(startPos + "  " + endPos + " " +letter+" "+msg_length);
+    // console.log(startPos + "  " + endPos + " " +letter+" "+msg_length);
 
     if(startPos!=endPos){//there is some text that has been selected. have to determine if the next key pressed will remove the selection or just cancel it.
     	selection = true;
@@ -31,32 +32,35 @@ function positioning(event)	{
 	
 
 
-	if(key_type == 8){ //this is backspace.
+	if(key_type == 8 || key_type == 46){ //this is backspace.
 		// email_text = $("#email").val();
-		if(selection){
-			running_char_array.splice(startPos,endPos);
+		if(selection){//deleted the whole selection.
+			dead_selection = email_content.slice(startPos,endPos);
+			dead_selection = dead_selection.split('');
+			deleted_char_array.push.apply(deleted_char_array,dead_selection);
 		}
-		dead = running_char_array.pop();
-		console.log("i have died " + dead);
-		deleted_char_array.push(dead);
+		else if(key_type==8){
+			dead = email_content.slice(endPos-1,endPos);
+			console.log(dead);
+			console.log("i have died " + dead + endPos );
+			deleted_char_array.push(dead);
+		}
+		else if(key_type==46){
+			dead = email_content.slice(endPos,endPos+1);
+			console.log(dead);
+			console.log("i have died " + dead + endPos );
+			deleted_char_array.push(dead);
+		}
 		
 	}
-	else{//if it's not 8
+	else{//if it's not bs or del. 
+		if(selection){//still overwrites for selection for other characters.
+			dead_selection = email_content.slice(startPos,endPos);
+			dead_selection = dead_selection.split('');
+			deleted_char_array.push.apply(deleted_char_array,dead_selection);
+		}
 
-	if(letter.length==1){//add if character is only a character usually special ones are more than 1.
-		running_char_array.push(letter);	
-		console.log(running_char_array);
-	}
-
-
-	// if(key_type==37){//left arrow
-	// 	console.log
-	// }
-
-	// if(key_type==39){//right arrow
-		
-	// }
-
+	console.log(deleted_char_array);
 	}
 }
 
