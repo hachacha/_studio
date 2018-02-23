@@ -6,7 +6,28 @@
 
 var deleted_char_array = [];
 var running_char_array = [];
-var just_cut = false;
+// var just_cut = false;
+
+window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
+  window.requestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
+}, function(e) {
+  console.log('Error', e);
+});
+
+function saveFile()	{
+	webkitRequestFileSystem(PERSISTENT, 1024*1024, function(filesystem) {
+
+	 filesystem.root.getFile("testf1.txt", { create: true }, function(file) {
+	  file.createWriter(function(writer) {
+	   writer.addEventListener("write", function(event) {
+	    location = file.toURL();
+	   });
+	   writer.addEventListener("error", console.error);
+	   writer.write(new Blob([ "test" ]));
+	  }, console.error)
+	 }, console.error)
+	}, console.error);
+}
 
 function positioning(event)	{
 	selection = false;
@@ -59,6 +80,7 @@ function positioning(event)	{
 
 			deleted_char_array.push(dead);
 		}
+		saveFile();
 		
 	}
 	else{//if it's not bs or del. 
@@ -67,13 +89,13 @@ function positioning(event)	{
 			dead_selection = dead_selection.split('');
 			deleted_char_array.push.apply(deleted_char_array,dead_selection);
 		}
-		console.log(just_cut);
+		// console.log(just_cut);
 		console.log(deleted_char_array);
 	}
 }
 
 document.addEventListener("keydown", function(event) {
-	just_cut=false;
+	// just_cut=false;
 	positioning(event);  	
 });
 
