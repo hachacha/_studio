@@ -6,28 +6,126 @@
 
 var deleted_char_array = [];
 var running_char_array = [];
+var filesystem = undefined;
 // var just_cut = false;
-
-window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-  window.requestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
-}, function(e) {
-  console.log('Error', e);
-});
-
-function saveFile()	{
+function onInitFs(fs){
+	filesystem = fs;
+}
+function makeNewFile(del_text)	{
 	webkitRequestFileSystem(PERSISTENT, 1024*1024, function(filesystem) {
 
-	 filesystem.root.getFile("testf1.txt", { create: true }, function(file) {
+	 filesystem.root.getFile("bslog.txt", { create: true }, function(file) {
 	  file.createWriter(function(writer) {
 	   writer.addEventListener("write", function(event) {
 	    location = file.toURL();
 	   });
 	   writer.addEventListener("error", console.error);
-	   writer.write(new Blob([ "test" ]));
+
+      writer.onwriteend = function(e) {
+        console.log('Write mofo.');
+      };
+      writer.onwriteerror = function(e) {
+        console.log('Write fucked up.');
+        console.log(e);
+      };
+	   writer.write(new Blob([ del_text ]));
+	   console.log(writer);
 	  }, console.error)
 	 }, console.error)
 	}, console.error);
+ }
+
+function errorHandler(e,del_text) {
+ // if no file found then. do it
+ console.log("errornhandler");
+ console.log(e);
+ if(e=="NotFoundError"){
+ 	console.log("yeah not found.");
+ 	makeNewFile(del_text);
+ }
+
+  // console.log('Error: ' + msg);
 }
+
+
+function readFile()	{
+
+  filesystem.root.getFile('bslog.txt', {}, function(fileEntry) {
+
+    // Get a File object representing the file,
+    // then use FileReader to read its contents.
+    fileEntry.file(function(file) {
+       var reader = new FileReader();
+
+       reader.onloadend = function(e) {
+         var txtArea = document.createElement('textarea');
+         txtArea.value = this.result;
+         document.body.appendChild(txtArea);
+       };
+
+       reader.readAsText(file);
+       console.log(reader);
+       console.log(reader.readAsText(file));
+       console.log(file);
+    }, errorHandler);
+
+  }, errorHandler);
+
+
+}
+
+//request to save on the thingies.
+navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(grantedBytes) {
+	console.log("bazinga");
+  window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
+}, function(e) {
+	consol.log("i amd oing it;");
+  console.log('Error', e);
+});
+
+function writeToFile(del_text){
+    filesystem.root.getFile("bslog.txt", {create: false}, function(fileEntry) {
+      fileEntry.createWriter(function(writer) {
+      	console.log(writer);
+      	writer.seek(writer.length);
+      	writer.position+=1;
+        writer.onwriteend = function(e) {
+            //we've truncated the file, now write the data
+            writer.onwriteend = function(e){
+                console.log('ayyy');
+            }
+            var blob = new Blob([del_text], {type: 'text/plain'});
+            writer.write(blob);
+        };
+        writer.truncate(0);
+    }, errorHandler);
+  }, errorHandler);
+    // readFile();
+}
+
+function saveToFile(del_text)	{
+	console.log("iwiwiwiw");
+	console.log(filesystem);
+	filesystem.root.getFile('bslog.txt', {create: false}, function(fileEntry) {
+	console.log(fileEntry);
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function(fileWriter) {
+    	console.log(fileEntry);
+	   console.log(del_text);
+
+      fileWriter.seek(fileWriter.length); // Start write position at EOF.
+
+      // Create a new Blob and write it to log.txt.
+      var blob = new Blob([del_text], {type: 'text/plain'});
+
+      fileWriter.write(blob);
+
+    }, errorHandler);
+
+  }, errorHandler);
+	// readFile();
+}
+
 
 function positioning(event)	{
 	selection = false;
@@ -70,17 +168,20 @@ function positioning(event)	{
 			dead_selection = in_value.slice(startPos,endPos);
 			dead_selection = dead_selection.split('');
 			deleted_char_array.push.apply(deleted_char_array,dead_selection);
+			writeToFile(dead_selection);
 		}
 		else if(key_type==8){
 			dead = in_value.slice(endPos-1,endPos);
 			deleted_char_array.push(dead);
+			writeToFile(dead);
 		}
 		else if(key_type==46){
 			dead = in_value.slice(endPos,endPos+1);
 
 			deleted_char_array.push(dead);
+			writeToFile(dead);
 		}
-		saveFile();
+		
 		
 	}
 	else{//if it's not bs or del. 
@@ -88,9 +189,10 @@ function positioning(event)	{
 			dead_selection = in_value.slice(startPos,endPos);
 			dead_selection = dead_selection.split('');
 			deleted_char_array.push.apply(deleted_char_array,dead_selection);
+			writeToFile(dead_selection);
 		}
 		// console.log(just_cut);
-		console.log(deleted_char_array);
+		// console.log(deleted_char_array);
 	}
 }
 
