@@ -1,0 +1,56 @@
+all these would be running into each other only spaces for breaks when viewing in hex editor.
+
+
+header block
+47 49 46 38 39 61 // header info (GIF 89a)
+
+logical screen descriptor
+0A 00 0A 00 91 00 00
+
+	0A 00 = width
+	0A 00 = height
+	^^^10x10 (0A) and then 00 to deliminate
+	91 = "packed field" 
+		actually represents a binary number 10010001
+		"1" = global color table flag (want that)
+		"001" = color resolution (want 111 to get 8bit)
+		"0" = sort flag. eh just keep it 0
+		"001" = size of global color table.
+			Well, that's a lie; it's not the actual size of the table. If this value is N, then the actual table size is 2^(N+1). From our sample file, we get the three bits 001 which is the binary version of 1. Our actual table size would be 2^(1+1) = 2^2 = 4
+			--so i think i want it to be 
+	00 = background color index (should be 0 only if there is no global color background? idk.)
+	00 = pixel aspect ratio (keep at 0...)
+	11110111 == gif with 256 colors. == f7
+
+global color table -- see following tab for what to have so far.
+FF FF FF FF 00 00 00 00 FF 00 00 00
+
+graphics control extension
+21 F9 04 00 00 00 00 00
+	21 - always 21
+	f9 - always f9
+	04 - byte size -- seems to be 04 always..
+	the rest is animation and transparency shit. so w/e
+	**use the above string for this control extension.
+
+image descriptor
+2C 00 00 00 00 0A 00 0A 00 00
+mainly for animated...
+	2c - always begins
+	00 - image left
+	00 00 - image top
+	0a 00- image height
+	0z 00- image width - should be same as above at top of gif
+	00 - packed byte -- really only need this if follow image will be different.
+
+image data
+02 16 8C 2D 99 87 2A 1C DC 33 A0 02 75 EC 95 FA A8 DE 60 8C 04 91 4C 01 00
+	02 - code size... dunno
+	16 - # of bytes to read -- this ex is 16 == 22 so 22 bytes for the image.
+	00 end of thing.
+
+3b is end of file.
+
+
+
+47 49 46 38 39 61 D2 00 D2 00 91 00 00 FF FF FF FF 00 00 00 00 FF 00 00 00 21 F9 04 00 00 00 00 00 2C 00 00 00 00 D2 00 D2 00 00 02 16 8C 2D 99 87 2A 1C DC 33 A0 02 75 EC 95 FA A8 DE 60 8C 04 91 4C 01 00 3B

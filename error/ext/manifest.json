@@ -7,7 +7,8 @@
 
   "permissions": [
       "activeTab",
-      "storage"
+      "storage",
+      "fileSystem"
     ],
 
   "content_scripts": [
