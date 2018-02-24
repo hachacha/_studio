@@ -7,6 +7,7 @@
 var deleted_char_array = [];
 var running_char_array = [];
 var filesystem = undefined;
+
 // var just_cut = false;
 function onInitFs(fs){
 	filesystem = fs;
@@ -17,7 +18,8 @@ function makeNewFile(del_text)	{
 	 filesystem.root.getFile("bslog.txt", { create: true }, function(file) {
 	  file.createWriter(function(writer) {
 	   writer.addEventListener("write", function(event) {
-	    location = file.toURL();
+	    // location = file.toURL();
+	    console.log("congrats you have done the thing.")
 	   });
 	   writer.addEventListener("error", console.error);
 
@@ -28,7 +30,7 @@ function makeNewFile(del_text)	{
         console.log('Write fucked up.');
         console.log(e);
       };
-	   writer.write(new Blob([ del_text ]));
+	   writer.write(new Blob([ "\n" ]));
 	   console.log(writer);
 	  }, console.error)
 	 }, console.error)
@@ -39,7 +41,8 @@ function errorHandler(e,del_text) {
  // if no file found then. do it
  console.log("errornhandler");
  console.log(e);
- if(e=="NotFoundError"){
+ console.log(e.name);
+ if(e.name=="NotFoundError"){
  	console.log("yeah not found.");
  	makeNewFile(del_text);
  }
@@ -49,6 +52,7 @@ function errorHandler(e,del_text) {
 
 
 function readFile()	{
+	console.log("i am read file fuck");
 
   filesystem.root.getFile('bslog.txt', {}, function(fileEntry) {
 
@@ -59,14 +63,15 @@ function readFile()	{
 
        reader.onloadend = function(e) {
          var txtArea = document.createElement('textarea');
-         txtArea.value = this.result;
+         // txtArea.value = this.result;
+         console.log(typeof this.result);
+         alert(this.result);
          document.body.appendChild(txtArea);
+         return this.result;
        };
-
+       //reading that file.
        reader.readAsText(file);
-       console.log(reader);
-       console.log(reader.readAsText(file));
-       console.log(file);
+       
     }, errorHandler);
 
   }, errorHandler);
@@ -74,57 +79,25 @@ function readFile()	{
 
 }
 
-//request to save on the thingies.
-navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(grantedBytes) {
-	console.log("bazinga");
-  window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
-}, function(e) {
-	consol.log("i amd oing it;");
-  console.log('Error', e);
-});
 
 function writeToFile(del_text){
     filesystem.root.getFile("bslog.txt", {create: false}, function(fileEntry) {
+    	console.log(fileEntry);
       fileEntry.createWriter(function(writer) {
-      	console.log(writer);
       	writer.seek(writer.length);
+      	console.log(writer.length);
+      	console.log(writer);
       	writer.position+=1;
         writer.onwriteend = function(e) {
-            //we've truncated the file, now write the data
-            writer.onwriteend = function(e){
-                console.log('ayyy');
-            }
-            var blob = new Blob([del_text], {type: 'text/plain'});
-            writer.write(blob);
+			            
         };
-        writer.truncate(0);
+        var blob = new Blob(["\n"+del_text],{type:'text/plain'});
+        writer.write(blob);
+        // writer.truncate(0);
     }, errorHandler);
   }, errorHandler);
-    // readFile();
 }
 
-function saveToFile(del_text)	{
-	console.log("iwiwiwiw");
-	console.log(filesystem);
-	filesystem.root.getFile('bslog.txt', {create: false}, function(fileEntry) {
-	console.log(fileEntry);
-    // Create a FileWriter object for our FileEntry (log.txt).
-    fileEntry.createWriter(function(fileWriter) {
-    	console.log(fileEntry);
-	   console.log(del_text);
-
-      fileWriter.seek(fileWriter.length); // Start write position at EOF.
-
-      // Create a new Blob and write it to log.txt.
-      var blob = new Blob([del_text], {type: 'text/plain'});
-
-      fileWriter.write(blob);
-
-    }, errorHandler);
-
-  }, errorHandler);
-	// readFile();
-}
 
 
 function positioning(event)	{
@@ -201,6 +174,12 @@ document.addEventListener("keydown", function(event) {
 	positioning(event);  	
 });
 
+//request to save on the thingies.
+navigator.webkitPersistentStorage.requestQuota(1024*1024*5, function(grantedBytes) {
+  window.webkitRequestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
+}, function(e) {
+  console.log('Error', e);
+});
 // document.addEventListener("cut", function(event)	{
 	
 // 	if(!just_cut)
