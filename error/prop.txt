@@ -1,0 +1,9 @@
+project:
+a backspace or a deletion on a computer is never registered as an erasure from the typing interface. it is it's own unique character that represents a failure (08 in decimal). to the typist's eyes that mistake has been wiped clear but it has a place on the memory of the computer. there's the failure and the character that is the exclamation point next to the failure. 
+
+failures are not meant to be covered. time still drives forward whether they are regarded or not. exposing these realities and including them into the mental model of the society is a necessity that is often overlooked. failure still takes time and energy and therefore should be still seen as just as fundamental and worthwhile as success and "progress".
+
+to complete this work i had written a script that would save any deleted character or characters during my web browsing. any time backspace or delete was called and that character would disappear from my screen it would be saved to a text file for later viewing. this is happening right now as i type this description. the text file was translated into a ppm file and then converted to jpg as per your standard. you would easily be able to take the ppm and convert it back to ascii values to see what exactly i fucked up on in my browsing and communicative history.
+
+practice:
+i usually work with debugging my own online self. not in the way that i present online but in the way i use online and the unconscious computer mediation of the everyday. i see the computer and internet as types altars in the same way that an altar is an interface to god the computer and knowledge that is on the internet has a similar relationship.

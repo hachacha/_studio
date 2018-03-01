@@ -1,0 +1,59 @@
+open call for eRR0R
+DEADLINE:
+FEB. 28, 2018, MIDNIGHT
+LOCATION:
+ARR.DALPOFZS.COM
+open call 
+
+for very short audio (.mp3 - max. 30s)
+and images (.jpg - max. 500kb)
+
+eRR0R
+
+in a world that covers its flaws in the blinding light of universal truths and institutionally reinforced regimes of visibility, we are interested in the fertile shades opened up by errors. the antiseptic intellectual environment our societies try to achieve, while arguably “healthy” and “safe” for the established values, has the huge disadvantage of obscuring any fundamentally different modes of existence. we are looking for submissions that explore the fertility of errors and question our inherited worldview.
+
+eRR0R will open in arrhythmicity (VR exhibition space at arr.dalpofzs.com) in march 2018
+
+submit your work by email at postoffice@dalpofzs.com
+please include a short description of your practice. 
+links to your website or presence on social media are welcomed. 
+
+deadline for submission 28.02.2018
+
+
+
+
+------------------------
+
+universal truth
+cover flaw
+institutionally reinforced visibility
+exposing error
+
+By resurrecting the dead we solve the problem of alienation from time. Together, they facilitate a grand unification of space-time in a metaphysics of kinship.
+
+progress involves superiority not only over the fathers (still alive) and ancestors (already dead) but also over animals … Progress makes fathers and ancestors into the accused and the sons and descendants into judges; historians are judges over the deceased, that is, those to have already endured capital punishment (the death penalty), while the sons sit in judgment over those who have not yet died. 
+
+deletion
+backspace
+in RAM on nonSSD hd it is never deleted it is overwritten eventually
+pointer is lost and it is nothing space
+in cache of current it is represented by another character
+the character to forget ^H or 08 for backspace meaning
+do not recognize the preceding character because the user/god has failed
+but the flaws the fails are not covered by the universal truth. they are obfuscated by our inability to recognize, parse, inneficiency to understand this particular language that makes sense to our children(computers in this instance). they pick up the baton.
+
+
+----------------------
+representation
+
+
+representing a gif from just the converted ascii->hex did not work. 
+	- too complicated and very little error reporting when trying to run so unclear what was even wrong.
+
+midi controller and instruments fired based on the deleted text
+	+ concerned this will be just some serial shit DERIVATIVE
+using processessing in some way
+going through personal photos and converting colors, pixel by pixel, from their originals to that of the hex value of 3 chars in a row from the deleted text.
+bmp?
+	https://en.wikipedia.org/wiki/BMP_file_format
