@@ -1,0 +1,114 @@
+body, html {
+			    height: 100%;
+			}
+
+			body{
+				cursor:help;
+			}
+
+			.o div{
+				position: absolute;
+				/*height:4032px;
+				width:3024px;*/
+				background-repeat: no-repeat;
+			}
+			#overlay1	{
+				position: relative;
+				/*top:400px;*/
+			}
+
+			.grayishsplotch{
+
+				left:-11px;
+				top:-30px;
+				background-image: url('img_overlays/grayishsplotch.png');
+				height:4032px;
+				width:3024px;
+			}
+			.heathertorso	{
+				left:2075px;
+				top:1884px;
+				background-image: url('img_overlays/heathertorso.png');
+				width: 844px;
+				height: 762px;
+			}
+			.armholecover{
+				left:2075px;
+				top:1879px;
+				background-image: url('img_overlays/armholecover.png');
+				z-index: 2;
+				width: 844px;
+				height: 774px;
+			}
+			.snowsunset	{
+				left:1686px;
+				top:2023px;
+				background-image: url('img_overlays/snowsunset.png');
+				width: 954px;
+				height: 1386px;
+
+			}
+			.scrollting	{
+				left:2042px;
+				top:102px;
+				background-image: url('img_overlays/scrollting.png');
+				width: 837px;
+				height: 658px;
+			}
+			.redexmud	{
+				left:1334px;
+				top:1546px;
+				background-image: url('img_overlays/redexmud.png');
+				width: 316;
+    			height: 513;
+			}
+			.purpstrip	{
+				left:13px;
+				top:1951px;
+				background-image: url('img_overlays/purpstrip.png');
+				z-index: -1;
+				width: 2017px;
+				height: 63px;
+			}
+			.snowchunk1	{
+				left:0px;
+				top:693px;
+				background-image: url('img_overlays/snowchunk1.png');
+				z-index: -1;
+				width: 2387px;
+				height: 1270px;
+			}
+			.snowchunk2	{
+				left:14px;
+				top:255px;
+				background-image: url('img_overlays/snowchunk2.png');
+				width: 2992px;
+				height: 1625px;
+				z-index: -2;
+			}
+
+			.brownstain	{
+				left:25px;
+				top:1413px;
+				background-image: url('img_overlays/brownstain.png');
+				width: 2934px;
+				height: 2580px;
+				z-index: -2;
+			}
+
+			.brownstain2	{
+				left:0px;
+				top:2184px;
+				background-image: url('img_overlays/brownstain2.png');
+				width: 1125px;
+				height: 1473px;
+			}
+
+			.brownstain3	{
+				left:0px;
+				top:1413px;
+				background-image: url('img_overlays/brownstain3.png');
+				width: 2930px;
+				height: 2580px;
+				z-index: -2;
+			}
