@@ -5,11 +5,27 @@
 				background-image: url('purple_landscape.png');
 			}
 		</style>
+		<script type="text/javascript">
+			function toggleHilight()	{
+				if(document.getElementById("hi").value==0){
+					var colors = ['yellow','lightcoral','lightgreen','lightsalmon','lightnightblue','black','gray','purple', "#854521"];
+
+					document.getElementById("actualImage").style.backgroundColor=colors[Math.floor(Math.random()*8)];
+
+				}
+				else{
+					document.getElementById("actualImage").style.backgroundColor="";
+				}
+			}
+		</script>
 	</head>
 	<body>
-
-			<center>
-				<img src="The_Flagellation_of_animated2.gif"/>
-			</center>
+	<input type="hidden" name="hi" id="hi" value="0" />
+	<div id="mainimg" onclick="toggleHilight(); return false;">
+		<center>
+			<img id="actualImage" src="The_Flagellation_of_animated2.gif"/>
+		</center>
+	</div>
+			
 	</body>
 </html>
