@@ -3,18 +3,27 @@
 		<style type="text/css">
 			body	{
 				background-image: url('purple_landscape.png');
+				color:white;
 			}
+
 		</style>
 		<script type="text/javascript">
 			function toggleHilight()	{
+				var colors = ['yellow','lightcoral','lightgreen','lightsalmon','lightnightblue','black','gray','purple', "#854521"];
 				if(document.getElementById("hi").value==0){
-					var colors = ['yellow','lightcoral','lightgreen','lightsalmon','lightnightblue','black','gray','purple', "#854521"];
+					
 
 					document.getElementById("actualImage").style.backgroundColor=colors[Math.floor(Math.random()*8)];
+					document.getElementById("bottomText").style.color="white";
+					document.getElementById("hi").value=1;
 
 				}
 				else{
 					document.getElementById("actualImage").style.backgroundColor="";
+					document.getElementById("bottomText").style.color=colors[Math.floor(Math.random()*8)];
+					document.getElementById("hi").value=0;
+					
+
 				}
 			}
 		</script>
@@ -22,9 +31,19 @@
 	<body>
 	<input type="hidden" name="hi" id="hi" value="0" />
 	<div id="mainimg" onclick="toggleHilight(); return false;">
+		<!-- <h1> -->
+			
+		<!-- </h1> -->
 		<center>
 			<img id="actualImage" src="The_Flagellation_of_animated2.gif"/>
 		</center>
+		<div id="bottomText"">
+		<pre>
+			see the self
+			for the forest
+			for the trees
+		</pre>
+		</div>
 	</div>
 			
 	</body>
