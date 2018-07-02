@@ -1,0 +1,35 @@
+framing:
+
+	In April of 2017 Steve Stephens killed Robert Goodwin in Cleveland Ohio, posted the murder video to facebook and lead police authorities, the press, and American citizens on a manhunt to try to pinpoint Stephens as a man in the digital and physical realms. 
+	Over a year after this tragedy the remains of this story are becoming even more fragmented as link rot and digital decay sets in. Some misinformation still remains up on local news websites, outraged tweets are still etched as 0s and 1s on spinning magnets in data centers next to other engravings for callout culture and consumerism. From the tail of the Google search we find direct quotes from articles describing the murder and intersperses them on pages for BBW pornography to create a canvas of search-ethic into which the rest of our calls for knowledge blow.
+	This project is an attempt to assuage this entire story from the distorted multiple perspectives and create a digital quilt/altar to the whole frenetic situation. The web platform where it will be hosted is based on The Method of Loci and Debord's dérive. Users will use their browser to and be presented with different "rooms" navigating by clicking on different objects until they terminate to static pages. All content on the site will be related to the shooting of Robert Goodwin and Steve Stephens. Images, text, video, design features, ads, and other web-remnants that exist as parts of the online experience of the research for this event will be collected and displayed in this memory palace. As users navigate and interact with these objects their clicking will have an effect on the display of the objects for all other users accessing the site representing to the digital decay and turning the piece into an non social social network as the communication is not controlled by the users and it is not apparent that they are directly effecting other user experiences. 
+
+direction/notes
+
+repurpose nothing code in hachacha repos
+maybe redo in django to make easier
+
+display linkrot 
+update pages that link to sources as they change
+archive them as found
+live portrait spread across all sources
+reverse image search and just the titles of the pages where they show up
+	https://stackoverflow.com/questions/12997597/google-reverse-image-search-api
+	https://www.google.com/imghp?sbi=1
+	tineye results of just this. iterate through? see what i get
+		https://tineye.com/search/c97e48976f82c9154663f5261b9dc699f9380509/?page=8&sort=score&order=desc
+
+https://www.cnn.com/2017/04/18/us/cleveland-facebook-killing-video/index.html
+
+conspiracy chat for this broo
+https://pastebin.com/1MipXYTe
+
+https://heavy.com/news/2017/04/stevie-steve-stephens-cleveland-facebook-live-shooting-full-video-unedited-watch/
+
+https://www.cbsnews.com/news/police-press-manhunt-for-facebook-video-murder-suspect-steve-stephens/
+timeline
+http://www.yourerie.com/news/local-news/police-continue-timeline-probe-of-steve-stephens/694487139
+
+http://www.cleveland.com/metro/index.ssf/2017/04/court_records_show_accused_fac.html#incart_most-read_metro_article
+https://en.wikipedia.org/wiki/Shooting_of_Robert_Godwin
+http://webcache.googleusercontent.com/search?q=cache:H_DFkrWrDxIJ:2859927.com/2017/04/30014/+&cd=6&hl=en&ct=clnk&gl=us&client=ubuntu
