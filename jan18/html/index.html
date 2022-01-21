@@ -5,6 +5,13 @@
 
 		<script type="text/javascript">
 		var curDown = false;
+		function pres_play(){
+					document.getElementById('therealsound').play();
+				}
+				$(document).click(function(){
+					pres_play();
+				});
+
 			$(function(){
 				  // var curDown = false,
 				  var curYPos = 0,
@@ -32,6 +39,7 @@
 					var cur_overlay1_top = parseInt($("#overlay1").css("top").replace("px",""));
 					console.log(cur_overlay1_top);
 					$("#overlay1").css("top",cur_overlay1_top-1);	
+					pres_play();
 				}
 				
 			});
@@ -45,17 +53,7 @@
 			 <audio id="therealsound" controls loop>
 			  <source src="computer-hum.mp3" type="audio/mp3">
 			</audio> 
-			<script>
-				function pres_play(){
-					document.getElementById('therealsound').play();
-				}
-				$(document).click(function(){
-					pres_play();
-				});
-				$(document).scroll(function(){
-					pres_play();
-				});
-</script>
+			
 		</div>
 		<div id="bg">
 			<div style="position:absolute;left:0;top:0;z-index:-999;width:3024;height:4032;">
